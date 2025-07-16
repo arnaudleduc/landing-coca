@@ -1,0 +1,120 @@
+/* Custom styles for Coca-Cola landing page */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Canvas 3D full height */
+canvas {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+/* Ensure container takes full height */
+.three-container {
+  width: 100%;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #e31837;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c41230;
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Coca-Cola specific animations */
+@keyframes coca-cola-glow {
+  0%,
+  100% {
+    text-shadow: 0 0 20px #e31837;
+  }
+  50% {
+    text-shadow: 0 0 40px #e31837, 0 0 60px #e31837;
+  }
+}
+
+.coca-cola-glow {
+  animation: coca-cola-glow 2s ease-in-out infinite;
+}
+
+/* 3D hover effects */
+.hover-3d {
+  transition: transform 0.3s ease;
+}
+
+.hover-3d:hover {
+  transform: translateZ(20px) rotateX(5deg) rotateY(5deg);
+}
+
+/* Custom button animations */
+.coca-cola-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.coca-cola-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s;
+}
+
+.coca-cola-button:hover::before {
+  left: 100%;
+}
+
+/* Responsive design utilities */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Loading animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
