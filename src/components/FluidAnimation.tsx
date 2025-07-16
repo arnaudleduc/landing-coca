@@ -66,7 +66,11 @@ export function FluidAnimation({ frameIndex }: FluidAnimationProps) {
   }
 
   return (
-    <group position={[3, -3, 0]} scale={[1, 1, 1]}>
+    <group
+      position={[3, -3, 0]}
+      scale={[1.2, 1.2, 1.2]}
+      rotation={[0.05, 0, 0]}
+    >
       <primitive object={models[frameIndex]} />
     </group>
   );

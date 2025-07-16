@@ -14,6 +14,15 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    /* Variables CSS pour les couleurs Coca-Cola */
+    --coca-cola-red: #f40000;
+    --coca-cola-black: #000000;
+    --coca-cola-grey: #b59e74;
+    --coca-cola-sand: #d7d8fb;
+    --coca-cola-yellow: #f79900;
+    --coca-cola-green: #6ace7f;
+    --coca-cola-orange: #ff560e;
   }
 
   body {
