@@ -255,12 +255,20 @@ function App() {
     setCurrentProductIndex((prev) =>
       prev === 0 ? products.length - 1 : prev - 1
     );
+    // Réinitialiser l'animation pour le nouveau produit
+    setFrameIndex(0);
+    setIsPlaying(false);
+    setShowDetailedView(false);
   };
 
   const goToNext = () => {
     setCurrentProductIndex((prev) =>
       prev === products.length - 1 ? 0 : prev + 1
     );
+    // Réinitialiser l'animation pour le nouveau produit
+    setFrameIndex(0);
+    setIsPlaying(false);
+    setShowDetailedView(false);
   };
 
   const handleLearnMore = () => {
@@ -272,8 +280,9 @@ function App() {
   const handleReturn = () => {
     setIsCameraTransitioning(true);
     setShowDetailedView(false);
-    setFrameIndex(0); // Remettre à l'état initial
-    setIsPlaying(false); // Arrêter l'animation en cours
+    // Réinitialiser l'animation comme les chevrons pour que le fluide se réinitialise
+    setFrameIndex(0);
+    setIsPlaying(false);
   };
 
   useEffect(() => {

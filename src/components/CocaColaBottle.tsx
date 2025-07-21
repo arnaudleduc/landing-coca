@@ -129,34 +129,37 @@ export function CocaColaBottle({
           firstAction.clampWhenFinished = true;
           firstAction.timeScale = 1;
           firstAction.play();
-        } else {
-          // Réinitialiser l'animation quand isPlaying devient false
-          firstAction.reset();
-          firstAction.stop();
         }
+        // SUPPRIMÉ : else qui reset/stop l'action automatiquement
       }
     }
   }, [actions, isPlaying]);
 
   // Synchronisation stricte frame à frame
   useEffect(() => {
-    if (!isPlaying) return;
     if (mixer && animations.length > 0) {
       const duration = animations[0].duration;
       const frameCount = 50;
-
       // Calculer le temps pour l'animation forward
       const time = (frameIndex / (frameCount - 1)) * duration;
       mixer.setTime(time);
-    }
-  }, [frameIndex, mixer, animations, isPlaying]);
 
-  // Réinitialiser l'animation quand frameIndex revient à 0
-  useEffect(() => {
-    if (frameIndex === 0 && !isPlaying && mixer && animations.length > 0) {
-      mixer.setTime(0); // Remettre à l'état initial
+      // Marquer l'animation comme terminée quand on atteint la dernière frame
     }
-  }, [frameIndex, isPlaying, mixer, animations]);
+  }, [frameIndex, mixer, animations]);
+
+  // Réinitialiser l'animation seulement quand frameIndex revient explicitement à 0
+  useEffect(() => {
+    if (frameIndex === 0 && mixer && animations.length > 0) {
+      // Forcer la réinitialisation de l'animation 3D
+      const firstAction = actions[Object.keys(actions)[0]];
+      if (firstAction) {
+        firstAction.reset();
+        firstAction.stop();
+      }
+      mixer.setTime(0);
+    }
+  }, [frameIndex, mixer, animations, actions]);
 
   return (
     <Float floatIntensity={2} rotationIntensity={0} speed={1}>
